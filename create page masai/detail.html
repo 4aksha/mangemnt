@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+</head>
+<body>
+
+   
+
+    <style>
+
+
+
+
+nav{
+            margin-left:460px;
+        }
+
+
+        #inputContainer{
+            margin-left:420px;
+        }
+
+
+
+        #inputContainer  input{
+            margin-top:20px;
+        }
+
+     table, td,th{
+            border: 1px solid black;
+            padding: 10px;
+
+            margin: auto;
+        }
+
+        .imgh{
+          height: 50px;
+          width: 100%;
+        }
+
+        th{
+            background-color: green;
+        }
+    </style>
+
+<img src="https://www.masaischool.com/img/navbar/logo.svg" alt=""> 
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Navbar</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link" href="detail.html">Batch</a>
+              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link disabled">Disabled</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+
+      <h1>show details here</h1>
+
+
+      
+      <table>
+      <thead>
+          <tr>
+              <th>Name</th>
+              <th>Images</th>
+              <th>Unit</th>
+              <th>Batch</th>
+              <th>Course</th>
+              <th>Delete</th>
+          </tr>
+      </thead>
+
+          <tbody id="sr"></tbody>
+      </table>
+
+  </div>
+
+
+
+</body>
+</html>
+<script>
+
+    let masai4 = JSON.parse(localStorage.getItem("masai2"))
+
+    masai4.map(function(elem){
+
+        
+ 
+
+      let r1 = document.createElement("tr")
+
+let tr1 = document.createElement("td")
+tr1.innerText = elem.name
+
+let tr2 = document.createElement("img")
+tr2.src =elem.image
+tr2.setAttribute("class","imgh")
+
+let tr3 = document.createElement("td")
+  tr3.innerText = elem.batch
+
+
+let tr4 = document.createElement("td")
+ tr4.innerText =elem.unit
+
+let tr5 = document.createElement("td")
+tr5.innerText = elem.course
+
+let tr6 = document.createElement("button")
+tr6.innerText = "Remove"
+
+tr6.addEventListener("click",function(){
+    gfgunjan(elem)
+})
+
+
+r1.append(tr1,tr2,tr3,tr4,tr5,tr6)
+document.getElementById("sr").append(r1)
+
+
+    })
+
+
+function  gfgunjan(elem,index){
+
+    masai4.splice(index,1)
+    localStorage.setItem("masai2",JSON.stringify(masai4))
+    window.location.reload()
+    
+}
+
+  
+  
+
+    
+
+</script>
